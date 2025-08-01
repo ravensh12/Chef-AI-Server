@@ -1,4 +1,4 @@
-// server/server.js
+// server.js
 import express from 'express';
 import cors from 'cors';
 import { HfInference } from '@huggingface/inference';
@@ -22,8 +22,7 @@ console.log("HF_ACCESS_TOKEN loaded:", hfAccessToken ? "Yes" : "No");
 if (!hfAccessToken) {
     console.error("Critical: HF_ACCESS_TOKEN is not set. Please check your .env file in the server directory.");
     // This will prevent the server from starting if the key is missing.
-    // In a real application, you might want to exit the process.
-    // process.exit(1);
+    process.exit(1);
 }
 
 // The Hugging Face API client, initialized with a securely stored API key
@@ -66,6 +65,7 @@ app.post('/api/generate-recipe', async (req, res) => {
     }
 });
 
+// The server now listens for requests on a specific port.
 app.listen(PORT, () => {
     console.log(`Server is running on http://localhost:${PORT}`);
 });
