@@ -69,3 +69,4 @@ app.post('/api/generate-recipe', async (req, res) => {
 app.listen(PORT, () => {
     console.log(`Server is running on http://localhost:${PORT}`);
 });
+// Temporary comment to trigger deploy
